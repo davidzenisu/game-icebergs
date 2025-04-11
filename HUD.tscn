@@ -207,9 +207,6 @@ offset_right = 173.5
 offset_bottom = 163.0
 grow_horizontal = 2
 grow_vertical = 2
-item_count = 1
-item_0/text = "None"
-item_0/selectable = false
 
 [node name="StartGameButton" type="Button" parent="LobbyArea"]
 layout_mode = 1
@@ -229,9 +226,12 @@ text = "Everybody's in!"
 [node name="ServerDiscovery" type="Node" parent="LobbyArea"]
 script = ExtResource("4_xxqia")
 
+[connection signal="client_discovery" from="." to="NameInput/ClientDiscovery" method="_on_start_server_discovery"]
+[connection signal="server_discovery" from="." to="LobbyArea/ServerDiscovery" method="_on_start_server_discovery"]
 [connection signal="pressed" from="ButtonsArea/StartServerButton" to="." method="_on_start_server_button_pressed"]
 [connection signal="pressed" from="ButtonsArea/StartClientButton" to="." method="_on_start_client_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
 [connection signal="text_changed" from="NameInput/LineEdit" to="." method="_on_name_input_changed"]
 [connection signal="pressed" from="NameInput/ConfirmNameButton" to="." method="_on_name_commit_button_pressed"]
+[connection signal="server_discovered" from="NameInput/ClientDiscovery" to="." method="_on_server_discovered"]
 [connection signal="pressed" from="LobbyArea/StartGameButton" to="." method="_on_start_game_button_pressed"]

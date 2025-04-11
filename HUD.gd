@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal client_discovery
+signal server_discovery
+signal server_discovered(server_ip: String)
 signal start_game
 
 func show_message(text):
@@ -32,15 +35,18 @@ func _on_MessageTimer_timeout():
 func _on_start_client_button_pressed() -> void:
 	$ButtonsArea.hide()
 	$NameInput.show()
-	$NameInput/ClientDiscovery._on_start_server_discovery()
+	client_discovery.emit()
+	#$NameInput/ClientDiscovery._on_start_server_discovery()
 
 func _on_name_commit_button_pressed() -> void:
+	$LobbyArea.show()
 	$NameInput.hide()
 
 func _on_start_server_button_pressed() -> void:
 	$ButtonsArea.hide()
 	$LobbyArea.show()
-	$LobbyArea/ServerDiscovery._on_start_server_discovery()
+	server_discovery.emit()
+	#$LobbyArea/ServerDiscovery._on_start_server_discovery()
 
 func _on_start_game_button_pressed() -> void:
 	$LobbyArea.hide()
@@ -51,3 +57,10 @@ func _on_name_input_changed(new_text: String) -> void:
 	regex.compile("^[a-zA-Z]{3,10}$")
 	var result = regex.search(new_text)
 	$NameInput/ConfirmNameButton.disabled = false if result else true
+
+func _on_server_discovered(server_ip: String) -> void:
+	server_discovered.emit(server_ip)
+
+func _on_player_changed(peer_id: int, player_info: Variant):
+	$LobbyArea/PlayerList.add_item("" + str(peer_id) + ": " + player_info["name"])
+	$LobbyArea/PlayerList.sort_items_by_text()

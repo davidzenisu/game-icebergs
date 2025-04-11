@@ -61,4 +61,7 @@ script = ExtResource("7_i21s3")
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="server_discovered" from="HUD" to="GameLobby" method="join_game"]
+[connection signal="server_discovery" from="HUD" to="GameLobby" method="create_game"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="player_connected" from="GameLobby" to="HUD" method="_on_player_changed"]

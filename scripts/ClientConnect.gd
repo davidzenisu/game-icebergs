@@ -1,5 +1,6 @@
-
 extends Node
+
+signal server_discovered(server_ip: String)
 
 const NETWORK_BROADCAST_LAN_PORT = 8808
 const GODOT_SERVER = "GODOT_SERVER"
@@ -29,4 +30,7 @@ func _process(delta):
 			if packet_info == GODOT_SERVER:
 				var server_ip = pp_udp.get_packet_ip()
 				print("Server found at:", server_ip)
+				server_discovered.emit(server_ip)
+				_on_stop_server_discovery()
+
 	
