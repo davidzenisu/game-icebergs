@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccqoreueuxdb7"]
+[gd_scene load_steps=7 format=3 uid="uid://ccqoreueuxdb7"]
 
 [ext_resource type="Script" uid="uid://bejhcq4qp4iqo" path="res://HUD.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_efote"]
+[ext_resource type="Script" uid="uid://buw65hcn64pjg" path="res://scripts/ClientConnect.gd" id="3_ne771"]
+[ext_resource type="Script" uid="uid://bhqbw062g5otj" path="res://scripts/ServerConnect.gd" id="4_xxqia"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_fopy7"]
 action = &"start_game"
@@ -168,6 +170,9 @@ theme_override_colors/font_color = Color(0.708199, 0.355924, 0.369665, 1)
 theme_override_font_sizes/font_size = 12
 text = "Note: 3-10 letters"
 
+[node name="ClientDiscovery" type="Node" parent="NameInput"]
+script = ExtResource("3_ne771")
+
 [node name="LobbyArea" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -220,6 +225,9 @@ offset_bottom = 226.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Everybody's in!"
+
+[node name="ServerDiscovery" type="Node" parent="LobbyArea"]
+script = ExtResource("4_xxqia")
 
 [connection signal="pressed" from="ButtonsArea/StartServerButton" to="." method="_on_start_server_button_pressed"]
 [connection signal="pressed" from="ButtonsArea/StartClientButton" to="." method="_on_start_client_button_pressed"]

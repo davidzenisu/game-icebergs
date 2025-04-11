@@ -32,6 +32,7 @@ func _on_MessageTimer_timeout():
 func _on_start_client_button_pressed() -> void:
 	$ButtonsArea.hide()
 	$NameInput.show()
+	$NameInput/ClientDiscovery._on_start_server_discovery()
 
 func _on_name_commit_button_pressed() -> void:
 	$NameInput.hide()
@@ -39,6 +40,7 @@ func _on_name_commit_button_pressed() -> void:
 func _on_start_server_button_pressed() -> void:
 	$ButtonsArea.hide()
 	$LobbyArea.show()
+	$LobbyArea/ServerDiscovery._on_start_server_discovery()
 
 func _on_start_game_button_pressed() -> void:
 	$LobbyArea.hide()
