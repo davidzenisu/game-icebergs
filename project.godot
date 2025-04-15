@@ -18,16 +18,12 @@ This is a finished version of the game featured in the 'Your first 2D game'
 tutorial in the documentation. For more details, consider
 following the tutorial in the documentation."
 config/tags=PackedStringArray("2d", "demo", "official")
-run/main_scene="res://Main.tscn"
+run/main_scene="uid://bvnwjpd0f3oa0"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.webp"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=720
-window/size/window_width_override=480
-window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

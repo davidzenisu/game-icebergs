@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://efwjm4hfeqf2"]
 
-[ext_resource type="PackedScene" path="res://spawn_poc/sphere.tscn" id="1_8awbr"]
+[ext_resource type="PackedScene" uid="uid://c6br8h3si2ypg" path="res://spawn_poc/sphere.tscn" id="1_8awbr"]
 [ext_resource type="Script" uid="uid://iokvneqe4phf" path="res://spawn_poc/level.gd" id="1_p4gvl"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_oi3di"]
 
